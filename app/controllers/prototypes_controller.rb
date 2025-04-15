@@ -6,6 +6,7 @@ class PrototypesController < ApplicationController
   def new
     @prototype = Prototype.new
   end
+  
   def create
     @prototype = Prototype.new(prototype_params)
     if @prototype.save
@@ -16,7 +17,7 @@ class PrototypesController < ApplicationController
   end
   
   def show
-
+    @prototype = Prototype.find(params[:id])
   end
 
   private
