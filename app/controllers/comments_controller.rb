@@ -3,12 +3,18 @@ class CommentsController < ApplicationController
   def create
     @prototype = Prototype.find(params[:prototype_id])
     @comment = @prototype.comments.build(comment_params)
+
   if @comment.save
     redirect_to prototype_path(@prototype), notice: 'コメントが投稿されました。'
   else
-    render "prototypes/show", status: :unprocessable_entity, alert: 'コメントの投稿に失敗しました。'
+    @comments = @prototype.comments.includes(:user)
+    render 'prototypes/show', status: :unprocessable_entity
   end
   end
+
+
+
+
 
 
   private
