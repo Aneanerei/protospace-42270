@@ -31,7 +31,7 @@
         </div>
       </div>
       <div class="prototype__comments">
-         <% if user_signed_in? && current_user.id == @prototype.user_id %>
+         <% if user_signed_in? %>
         <%# ログインしているユーザーには以下のコメント投稿フォームを表示する %>
           <%= form_with model: [@prototype,@comment], local: true do |f|%>
             <div class="field">
